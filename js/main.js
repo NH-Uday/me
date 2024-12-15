@@ -458,8 +458,120 @@ var portfolioFilter = function () {
 			return false;
 		});
 	};
+
+
 	$(function () {
 
 		portfolioFilter();
 
 	});
+
+let currentDate = new Date();
+let currentMonth = currentDate.getMonth();
+let currentYear = currentDate.getFullYear();
+
+// List of dates to highlight in red with text
+const highlightedDates = [
+    { date: 21, text: 'Xmas' }, 
+    { date: 22, text: 'Xmas' }, 
+	{ date: 23, text: 'Xmas' },
+	{ date: 24, text: 'Xmas' },
+    { date: 25, text: 'Xmas' }, 
+	{ date: 26, text: 'Xmas' },
+	{ date: 27, text: 'Ny' },
+	{ date: 28, text: 'Ny' },
+	{ date: 29, text: 'Ny' },
+	{ date: 30, text: 'Ny' },
+	{ date: 31, text: 'Ny' },
+];
+
+// Display current month and year
+function displayMonthYear() {
+    const monthYearElement = document.getElementById("month-year");
+    const months = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+    ];
+    monthYearElement.innerHTML = `${months[currentMonth]} ${currentYear}`;
+}
+
+// Create the calendar grid
+function createCalendar() {
+    const calendarBody = document.getElementById("calendar-body");
+    calendarBody.innerHTML = ""; // Clear any existing data
+
+    const firstDayOfMonth = new Date(currentYear, currentMonth, 1);
+    const lastDateOfMonth = new Date(currentYear, currentMonth + 1, 0);
+    const totalDaysInMonth = lastDateOfMonth.getDate();
+    const firstDayOfWeek = firstDayOfMonth.getDay();
+    
+    let day = 1;
+    const rows = Math.ceil((totalDaysInMonth + firstDayOfWeek) / 7);
+    
+    for (let i = 0; i < rows; i++) {
+        const row = document.createElement("tr");
+        
+        for (let j = 0; j < 7; j++) {
+            const cell = document.createElement("td");
+            
+            if (i === 0 && j < firstDayOfWeek) {
+                // Empty cell before the first day of the month
+                cell.innerHTML = "";
+            } else if (day <= totalDaysInMonth) {
+                // Fill the cell with the day number
+                const dayText = document.createElement("span");
+                dayText.innerHTML = day;
+                cell.appendChild(dayText); // Add the day number at the top
+
+                if (day === currentDate.getDate() && currentMonth === new Date().getMonth() && currentYear === new Date().getFullYear()) {
+                    cell.classList.add("today"); // Highlight today
+                }
+
+                // Check if the day should be highlighted
+                highlightedDates.forEach((highlightedDate) => {
+                    if (highlightedDate.date === day) {
+                        cell.classList.add("highlighted");
+                        const textNode = document.createElement("span");
+                        textNode.classList.add("highlight-text");
+                        textNode.innerHTML = highlightedDate.text; // Event text at the bottom
+                        cell.appendChild(textNode);
+                    }
+                });
+
+                day++;
+            }
+            
+            row.appendChild(cell);
+        }
+        
+        calendarBody.appendChild(row);
+    }
+}
+
+// Navigate to the previous month
+document.querySelector(".prev-month").addEventListener("click", function() {
+    currentMonth--;
+    if (currentMonth < 0) {
+        currentMonth = 11;
+        currentYear--;
+    }
+    displayMonthYear();
+    createCalendar();
+});
+
+// Navigate to the next month
+document.querySelector(".next-month").addEventListener("click", function() {
+    currentMonth++;
+    if (currentMonth > 11) {
+        currentMonth = 0;
+        currentYear++;
+    }
+    displayMonthYear();
+    createCalendar();
+});
+
+// Initial display
+displayMonthYear();
+createCalendar();
+
+
