@@ -9827,3 +9827,92 @@ textarea.form-control {
   100% {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -136px; } }
+
+.calendar-container {
+      background: white;
+      border-radius: 10px;
+      padding: 40px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 600px;
+      font-size: 20px;
+  }
+  
+  .calendar-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  }
+  
+  .calendar-header h2 {
+      margin: 0;
+      font-size: 24px;
+  }
+  
+  button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 15px;
+      cursor: pointer;
+      font-size: 22px;
+      width: 50px; 
+      height: 50px;
+  }
+  
+  button:hover {
+      background-color: #45a049;
+  }
+  
+  table {
+      width: 100%;
+      margin-top: 20px;
+      border-collapse: collapse;
+  }
+  
+  th, td {
+      padding: 20px;
+      text-align: center;
+      width: 14.28%;
+      font-size: 22px;
+  }
+  
+  th {
+      background-color: #f1f1f1;
+      font-weight: bold;
+  }
+  
+  td {
+      background-color: #f9f9f9;
+      cursor: pointer;
+  }
+  
+  td:hover {
+      background-color: #e3e3e3;
+  }
+  
+  .today {
+      background-color: #4CAF50;
+      color: white;
+      border-radius: 50%;
+      font-weight: bold;
+  }
+.highlighted {
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  border-radius: 50%;
+  position: relative;
+}
+
+.highlighted .highlight-text {
+    position: absolute;
+    bottom: 5px; 
+    left: 50%;
+    transform: translateX(-50%); 
+    font-size: 12px;
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    padding: 2px 5px;
+}
