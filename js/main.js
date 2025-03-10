@@ -471,6 +471,7 @@ let currentMonth = currentDate.getMonth();
 let currentYear = currentDate.getFullYear();
 
 // List of dates to highlight in red with text
+/*
 const highlightedDates = [
     { date: 21, text: 'Xmas' }, 
     { date: 22, text: 'Xmas' }, 
@@ -484,6 +485,7 @@ const highlightedDates = [
 	{ date: 30, text: 'Ny' },
 	{ date: 31, text: 'Ny' },
 ];
+*/
 
 // Display current month and year
 function displayMonthYear() {
@@ -528,15 +530,14 @@ function createCalendar() {
                 }
 
                 // Check if the day should be highlighted
-                highlightedDates.forEach((highlightedDate) => {
-                    if (highlightedDate.date === day) {
-                        cell.classList.add("highlighted");
-                        const textNode = document.createElement("span");
-                        textNode.classList.add("highlight-text");
-                        textNode.innerHTML = highlightedDate.text; // Event text at the bottom
-                        cell.appendChild(textNode);
-                    }
-                });
+                const dayOfWeek = new Date(currentYear, currentMonth, day).getDay();
+            	if (dayOfWeek === 6 || dayOfWeek === 0) {
+              		cell.classList.add("highlighted");
+					const weekendText = document.createElement("span");
+              	 	weekendText.classList.add("highlight-text");
+              		weekendText.innerHTML = "Weekend";
+              		cell.appendChild(weekendText);
+				}
 
                 day++;
             }
