@@ -2,8 +2,6 @@
 💼 Nahin Uday – Personal Portfolio Website
 Welcome to my personal portfolio website! This project showcases my academic journey, professional experience, technical skills, projects, and achievements. Designed to be fully responsive and interactive, this site serves as a dynamic digital resume and portfolio for potential employers, collaborators, and tech enthusiasts.
 
-🌐 Live Demo
-🔗 Visit My Website
 
 📁 Project Structure
 This portfolio is built using HTML, CSS, JavaScript, and integrates various animation and UI libraries for a modern and engaging user experience.
@@ -86,8 +84,6 @@ Add a backend (Node.js or Django) to handle contact form submissions
 Implement blog section for sharing tech articles
 
 Store schedule events in a calendar module (currently static)
-
-Convert the site into a React single-page application for maintainability
 
 🤝 Contributing
 Feel free to fork this repository and customize it for your own use. Contributions, suggestions, or feature requests are welcome!
